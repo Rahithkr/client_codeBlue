@@ -113,8 +113,6 @@
 // export default DriverMap;
 
 
-
-
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -139,7 +137,7 @@ interface DriverMapProps {
   email: string;
 }
 
-const DriverMap: React.FC<DriverMapProps> = ({ email }) => {
+const DriverMap: React.FC<any> = ({ email })  => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY!,
     libraries,
@@ -163,7 +161,9 @@ const DriverMap: React.FC<DriverMapProps> = ({ email }) => {
     }
   }, []);
 
-  const updateDriverPosition = (position: GeolocationPosition) => {
+  
+
+  const updateDriverPosition = useCallback((position: GeolocationPosition) => {
     const newDriverPosition = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
@@ -172,7 +172,7 @@ const DriverMap: React.FC<DriverMapProps> = ({ email }) => {
 
     // Send updated position to the backend
     updateDriverLocation(newDriverPosition, email);
-  };
+  }, [email]);
 
   const updateDriverLocation = async (newPosition: { lat: number; lng: number }, email: string) => {
     try {
@@ -197,7 +197,7 @@ const DriverMap: React.FC<DriverMapProps> = ({ email }) => {
       // Clean up the watcher on unmount
       return () => navigator.geolocation.clearWatch(watchId);
     }
-  }, []);
+  }, [updateDriverPosition]);
 
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading maps</div>;

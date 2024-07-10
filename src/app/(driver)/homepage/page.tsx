@@ -45,6 +45,7 @@ interface DriverInfo {
   registrationStatus: string;
 }
 
+
 interface RideResponse {
   userSocketId: string;
   approved: boolean;

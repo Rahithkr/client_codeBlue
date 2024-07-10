@@ -15,7 +15,7 @@ function randomID(len: number) {
   return result;
 }
 
-export function getUrlParams(url = window.location.href) {
+export function getUrlParams(url:any = window.location.href):any {
   let urlStr = url.split('?')[1];
   return new URLSearchParams(urlStr);
 }
