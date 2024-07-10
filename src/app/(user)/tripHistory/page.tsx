@@ -65,7 +65,7 @@ const TripHistory = () => {
     };
 
     fetchTicketStatus();
-  }, []);
+  }, [selectedTripId]);
 
   const handleTicket = (tripId: string) => {
     setSelectedTripId(tripId);

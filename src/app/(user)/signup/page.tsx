@@ -5,6 +5,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image';
 
 interface formData {
   username: string;
@@ -203,8 +204,11 @@ function Signup() {
         </form>
       </div>
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
-        <img src="https://i2-prod.walesonline.co.uk/incoming/article25253902.ece/ALTERNATES/s1200c/0_400890Ambulance-S10.jpg" alt="Ambulance staff" className="max-w-full h-auto" />
-      </div>
+      <Image
+    src="https://i2-prod.walesonline.co.uk/incoming/article25253902.ece/ALTERNATES/s1200c/0_400890Ambulance-S10.jpg"
+    alt="Ambulance staff"
+    className="max-w-full h-auto"
+  />      </div>
     </div>
   )
 }

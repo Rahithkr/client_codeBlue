@@ -171,7 +171,6 @@ const handleGetCurrentLocation = (e: React.MouseEvent<HTMLButtonElement, MouseEv
       console.log('amunnnt',rideResponse.tripAmount);
       
    setAmount(rideResponse.tripAmount)
-   console.log("amount",amount);
    
       if (rideResponse && rideResponse.driverInfo) {
         console.log("Driver information received:", rideResponse.driverInfo);
@@ -230,12 +229,12 @@ const handleGetCurrentLocation = (e: React.MouseEvent<HTMLButtonElement, MouseEv
     }
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
    
-    if (amount !== null) {
-      console.log('Amount updated:', amount);
-    }
-  }, [amount]);
+  //   if (amount !== null) {
+  //     console.log('Amount updated:', amount);
+  //   }
+  // }, [amount]);
 
 
   const handleConfirmRide = async () => {

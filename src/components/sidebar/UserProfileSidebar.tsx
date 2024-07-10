@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import axios from 'axios'
+import Image from 'next/image';
 
 function UserProfileSidebar() {
     const router=useRouter()
@@ -48,10 +49,10 @@ function UserProfileSidebar() {
     <div className='flex flex-col md:flex-row h-screen bg-gray-100'>
          <aside className="w-full md:w-64  bg-white shadow-md">
         <div className="p-6 flex flex-col items-center">
-          <img
-           className="rounded-full"
+        <Image
+            className="rounded-full"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGmtdzpTv68MPY036tXoBBqHOaD_lDETPwEw&s"
-            alt=""
+            alt="User Profile"
             width={128}
             height={128}
           />

@@ -165,23 +165,23 @@ console.log("tripsmount",tripAmount);
 
     };
   }, [isOnline, email]);
-  useEffect(() => {
-    const storedApprovedRequest = localStorage.getItem('approvedRequest');
-    console.log("type",typeof(storedApprovedRequest));
+//   useEffect(() => {
+//     const storedApprovedRequest = localStorage.getItem('approvedRequest');
+//     console.log("type",typeof(storedApprovedRequest));
     
-    console.log('storedApprovedRequest',storedApprovedRequest);
+//     console.log('storedApprovedRequest',storedApprovedRequest);
     
-    if (storedApprovedRequest) {
-      setApprovedRequest(JSON.parse(storedApprovedRequest));
-      console.log("appprrrovvestate",approvedRequest);
+//     if (storedApprovedRequest) {
+//       setApprovedRequest(JSON.parse(storedApprovedRequest));
+//       console.log("appprrrovvestate",approvedRequest);
       
-    }
-    const driverInf=localStorage.getItem('rideResponsed')
- if(driverInf){
-  setDriverInfo(JSON.parse(driverInf))
-  setTripAmount(Number(tripAmount))
- }
-  }, []);
+//     }
+//     const driverInf=localStorage.getItem('rideResponsed')
+//  if(driverInf){
+//   setDriverInfo(JSON.parse(driverInf))
+//   setTripAmount(Number(tripAmount))
+//  }
+//   }, []);
  
 
   const handleApprove = async (request: RideRequest) => {

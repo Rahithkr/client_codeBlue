@@ -3,6 +3,7 @@ import axios from 'axios';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface formData {
  
@@ -21,7 +22,7 @@ interface Errors {
 }
 
 function DriverLogin() {
-  const router = useRouter()
+  const router = useRouter();
 
   const {status,data:session}=useSession();
   console.log("succes",status);
@@ -32,7 +33,7 @@ function DriverLogin() {
     }else{
       router.push('/driverlogin')
     }
-  },[status])
+  },[status,router])
   const [formData, setFormData] = useState<formData>({
     email: '',
     password: ''
@@ -95,8 +96,13 @@ try{
     <div className="flex flex-col md:flex-row justify-center items-center min-h-screen bg-slate-400">
     
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
-        <img src="https://img.freepik.com/premium-vector/ambulance-staff-car-couple-doctors-doctor-with-emergency-bag-assistant-night-shift-vector_916026-443.jpg" alt="Ambulance staff" className="max-w-full h-auto" />
-      </div>
+      <Image
+    src="https://img.freepik.com/premium-vector/ambulance-staff-car-couple-doctors-doctor-with-emergency-bag-assistant-night-shift-vector_916026-443.jpg"
+    alt="Ambulance staff"
+    width={700}
+    height={475}
+    className="max-w-full h-auto"
+  />      </div>
 
       
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
@@ -120,7 +126,7 @@ try{
           <button onClick={handleForgotPassword}><a href="#" className="text-sm text-gray-900 dark:text-white mt-2 ms-8">Forgot password?</a></button>
           </div>
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-          <p className='text text-slate-900 mt-3' >Don't have an account ?<a href="/driversignup"><span className='text text-blue-700'> Sign up </span></a></p>
+          <p className='text text-slate-900 mt-3' >Don&#39;t have an account ?<a href="/driversignup"><span className='text text-blue-700'> Sign up </span></a></p>
 
           <button onClick={()=>signIn("google")} type="button" className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 ms-10 me-2 mb-2">
 <svg className="w-10 ms-3 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">

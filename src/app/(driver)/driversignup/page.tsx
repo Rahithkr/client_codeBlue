@@ -7,6 +7,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface formData {
   drivername: string;
@@ -117,8 +118,13 @@ const DriverSignup: React.FC = () => {
         </form>
       </div>
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
-        <img src="https://i2-prod.walesonline.co.uk/incoming/article25253902.ece/ALTERNATES/s1200c/0_400890Ambulance-S10.jpg" alt="Ambulance staff" className="max-w-full h-auto" />
-      </div>
+      <Image
+          src="https://i2-prod.walesonline.co.uk/incoming/article25253902.ece/ALTERNATES/s1200c/0_400890Ambulance-S10.jpg"
+          alt="Ambulance staff"
+          width={1200}
+          height={800}
+          className="max-w-full h-auto"
+        />      </div>
     </div>
   );
 };

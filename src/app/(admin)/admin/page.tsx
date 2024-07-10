@@ -2,10 +2,11 @@
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import Image from 'next/image'; // Importing Image from next/image
 
-function driverlogin() {
+function Driverlogin() {
 
-  const router=useRouter()
+  const router=useRouter();
 
  const [formData,setFormData]=useState({
   email:"",
@@ -48,7 +49,7 @@ function driverlogin() {
     <div className="flex flex-col md:flex-row justify-center items-center min-h-screen bg-slate-400">
       {/* Left side - Image */}
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
-        <img src="https://img.freepik.com/premium-vector/ambulance-staff-car-couple-doctors-doctor-with-emergency-bag-assistant-night-shift-vector_916026-443.jpg" alt="Ambulance staff" className="max-w-full h-auto" />
+        <Image src="https://img.freepik.com/premium-vector/ambulance-staff-car-couple-doctors-doctor-with-emergency-bag-assistant-night-shift-vector_916026-443.jpg" alt="Ambulance staff" className="max-w-full h-auto" width={700} height={500} />
       </div>
 
       {/* Right side - Form */}
@@ -76,4 +77,4 @@ function driverlogin() {
   )
 }
 
-export default driverlogin
+export default Driverlogin

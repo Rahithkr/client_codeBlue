@@ -15,7 +15,7 @@ interface User {
     mobile: string;
     isBlocked: boolean;
 }
-function usermanagement() {
+function Usermanagement() {
     const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
@@ -112,4 +112,4 @@ function usermanagement() {
   )
 }
 
-export default usermanagement
+export default Usermanagement

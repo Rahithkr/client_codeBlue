@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
 
-function userProfile() {
+function UserProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
 
@@ -27,7 +27,7 @@ useEffect(() => {
     };
 
     fetchUsers();
-}, []);
+}, [email]);
 
 
   return (
@@ -80,4 +80,4 @@ useEffect(() => {
 )
 }
 
-export default userProfile
+export default UserProfile
