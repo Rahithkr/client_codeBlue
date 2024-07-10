@@ -198,7 +198,7 @@ interface Props {
   onPickupPositionChange: (position: Position) => void;
 }
 
-const UserMap: React.FC<Props> = ({ email, pickupPosition, destinationPosition, onPickupPositionChange }) => {
+const UserMap: React.FC<any> = ({ email, pickupPosition, destinationPosition, onPickupPositionChange }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY!,
     libraries,

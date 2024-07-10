@@ -15,10 +15,10 @@ function randomID(len: number) {
   return result;
 }
 
-export function getUrlParams(url:any = window.location.href):any {
-  let urlStr = url.split('?')[1];
-  return new URLSearchParams(urlStr);
-}
+// export function getUrlParams(url = window.location.href) {
+//   let urlStr = url.split('?')[1];
+//   return new URLSearchParams(urlStr);
+// }
 
 export default function App({params}:{params:{RoomId:string}}) {
 
