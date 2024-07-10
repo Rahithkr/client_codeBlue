@@ -1,6 +1,6 @@
 
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { Suspense,useEffect, useState } from 'react';
 import DriverNavbar from '@/components/landing-page/DriverNavbar';
 import Request from '../../Request/page';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -9,6 +9,7 @@ import axios from 'axios';
 import { AlertCircle } from "lucide-react";
 import { generateRandomId } from '@/lib/randomTripId';
 import dotenv from 'dotenv'
+import Loading from '@/components/loading/page';
 
 dotenv.config()
 // Simulated Google Maps API key
@@ -594,4 +595,11 @@ await axios.post('http://localhost:5000/server/user/updateTripId', {
   );
 }
 
-export default Homepage;
+const HomepageData: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Homepage />
+    </Suspense>
+  );
+};
+export default HomepageData;

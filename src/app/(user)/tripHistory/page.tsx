@@ -3,11 +3,11 @@
 
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, {Suspense, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import UserProfileSidebar from '@/components/sidebar/UserProfileSidebar';
-
+import Loading from '@/components/loading/page';
 type Position = {
   lat: number;
   lng: number;
@@ -176,5 +176,13 @@ console.log('ticker',ticketStatus);
     </div>
   );
 };
-
-export default TripHistory;
+const TripHistoryData   : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <TripHistory />
+      </Suspense>
+   
+  );
+};
+export default TripHistoryData;

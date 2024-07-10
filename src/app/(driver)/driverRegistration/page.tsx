@@ -3,7 +3,7 @@
 import ProfileSidebar from '@/components/sidebar/ProfileSidebar'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState ,Suspense } from 'react'
 
 
 
@@ -26,7 +26,7 @@ function DriverRegistration() {
       vehicleModel: '',
       vehicleNumber: '',
     });
-    const [file, setFile] = useState<File>();
+    const [file, setFile] = useState<File | null>(null);
 
 
 
@@ -141,4 +141,12 @@ try {
     </div>
   
   )}
-export default DriverRegistration
+  function DriverRegistrationPage() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <DriverRegistration />
+      </Suspense>
+    );
+  }
+ 
+export default DriverRegistrationPage

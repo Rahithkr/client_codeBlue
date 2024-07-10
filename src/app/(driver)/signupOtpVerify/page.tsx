@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense,useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
-
+import Loading from '@/components/loading/page';
 const VerifyOtp: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -105,5 +105,15 @@ const VerifyOtp: React.FC = () => {
     </div>
   );
 };
+const OtpVerification: React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <VerifyOtp />
+      </Suspense>
+   
+  );
+};
 
-export default VerifyOtp;
+
+export default OtpVerification;

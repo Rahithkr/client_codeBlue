@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, {Suspense, useEffect, useRef, useState, useCallback } from 'react';
 import Header from '@/components/landing-page/Header';
 import { signOut } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -11,7 +11,7 @@ import axios from 'axios';
 import socket from '../../../lib/socket';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import dotenv from 'dotenv'
-
+import Loading from '@/components/loading/page';
 dotenv.config()
 
 const libraries: ('places')[] = ['places'];
@@ -608,8 +608,16 @@ const handleCancelRide = () => {
     
   );
 }
-
-export default Home;
+const HomeData : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <Home />
+      </Suspense>
+   
+  );
+};
+export default HomeData;
 
 
 

@@ -1,7 +1,7 @@
 
 
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { Suspense,useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import ProfileSidebar from '@/components/sidebar/ProfileSidebar';
@@ -92,6 +92,13 @@ const TripHistory = () => {
   );
 };
 
-export default TripHistory;
+const TripHistoryPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TripHistory />
+    </Suspense>
+  );
+};
+export default TripHistoryPage;
 
 

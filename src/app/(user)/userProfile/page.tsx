@@ -1,9 +1,9 @@
 'use client'
 import UserProfileSidebar from '@/components/sidebar/UserProfileSidebar'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
-
+import Loading from '@/components/loading/page';
 function UserProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -79,5 +79,13 @@ useEffect(() => {
   </div>
 )
 }
-
-export default UserProfile
+const UserProfileData   : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <UserProfile />
+      </Suspense>
+   
+  );
+};
+export default UserProfileData

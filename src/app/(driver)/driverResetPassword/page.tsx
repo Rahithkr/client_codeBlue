@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState,Suspense } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -70,4 +70,11 @@ const NewPassword: React.FC = () => {
   );
 };
 
-export default NewPassword;
+const NewPasswordPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NewPassword />
+    </Suspense>
+  );
+};
+export default NewPasswordPage;

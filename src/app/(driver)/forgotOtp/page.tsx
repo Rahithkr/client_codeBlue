@@ -4,10 +4,11 @@
 
 
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, {Suspense, useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Loading from '@/components/loading/page';
 
 const OtpVerifications: React.FC = () => {
   const router = useRouter();
@@ -98,6 +99,13 @@ const OtpVerifications: React.FC = () => {
     </div>
   );
 };
+const OtpVerificationsPage: React.FC = () => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <OtpVerifications />
+    </Suspense>
+  );
+};
 
-export default OtpVerifications;
+export default OtpVerificationsPage;
 

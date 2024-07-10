@@ -2,8 +2,8 @@
 import ProfileSidebar from '@/components/sidebar/ProfileSidebar'
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
-
+import React, { Suspense,useEffect, useState } from 'react'
+import Loading from '@/components/loading/page';
 function DriverProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -75,5 +75,11 @@ function DriverProfile() {
     </div>
   )
 }
-
-export default DriverProfile
+const DriverProfilePage: React.FC = () => {
+  return (
+    <Suspense fallback={<Loading />}>
+      <DriverProfile />
+    </Suspense>
+  );
+};
+export default DriverProfilePage

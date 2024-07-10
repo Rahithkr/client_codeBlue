@@ -1,10 +1,10 @@
 
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,Suspense } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
-
+import Loading from '@/components/loading/page';
 const OtpVerification: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -94,6 +94,15 @@ const OtpVerification: React.FC = () => {
     </div>
   );
 };
+const OtpVerificationForm   : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <OtpVerification />
+      </Suspense>
+   
+  );
+};
 
-export default OtpVerification;
+export default OtpVerificationForm ;
 

@@ -1,8 +1,8 @@
 'use client'
-import React from 'react';
+import React,{Suspense} from 'react';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-
+import Loading from '@/components/loading/page';
 const ThankYouPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -23,5 +23,14 @@ const ThankYouPage = () => {
     </div>
   );
 };
+const ThankYouPageform   : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <ThankYouPage />
+      </Suspense>
+   
+  );
+};
 
-export default ThankYouPage;
+export default ThankYouPageform;

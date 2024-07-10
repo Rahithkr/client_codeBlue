@@ -3,10 +3,10 @@
 'use client'
 import UserProfileSidebar from '@/components/sidebar/UserProfileSidebar';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense,useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {toast} from 'sonner'
-
+import Loading from '@/components/loading/page';
 function EditProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -103,5 +103,13 @@ function EditProfile() {
     </div>
   );
 }
-
-export default EditProfile;
+const EditProfileForm : React.FC = () => {
+  return (
+    
+      <Suspense fallback={<Loading />}>
+        <EditProfile />
+      </Suspense>
+   
+  );
+};
+export default EditProfileForm;
