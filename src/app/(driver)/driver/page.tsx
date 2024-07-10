@@ -1,39 +1,57 @@
 'use client'
+import Navbar from '@/components/landing-page/DriverNavbar'
+import {useRouter} from 'next/navigation'
+import React from 'react'
 
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-export default function Home() {
-
+function driverlanding() {
   const router=useRouter()
-  
+const handleSubmit=(e:any)=>{
+e.preventDefault()
+router.push('/driversignup')
+}
 
-  const handleSubmit=(e:any)=>{
-    e.preventDefault()
-    router.push('/signup')
-  }
-
-  const handleLoginUser=(e:any)=>{
-  e.preventDefault()
-  router.push('/login')
-  }
-
+const handleLogin=(e:any)=>{
+ e.preventDefault()
+ router.push('/driverlogin')
+}
   return (
     <div className="flex flex-col justify-center items-center py-8 mt-5 ">
+      <Navbar email=''/>
     <div className="flex flex-col justify-center items-center py-8 mt-5 w-full bg-slate-800">
     <div className="flex flex-col md:flex-row justify-around items-center w-full max-w-screen-xl px-4 ">
       
       <div className="w-full md:w-1/2 py-5 mt-5">
-        <h1  className="text-white text-center md:text-left text-5xl lg:text-5xl font-semibold font-sans  ">"We are here for you, bringing hope and care."</h1>
+        <h1  className="text-white text-center md:text-left text-5xl lg:text-5xl font-semibold font-sans  ">"Not all superheroes wear capes; some drive ambulances and save lives."</h1>
          <div className="flex flex-col justify-center items-center gap-5 mt-5 py-3 mr-20 ">
-        
+       
+{/* <form className="flex items-center max-w-sm mx-auto">   
+    <div className="relative w-full flex flex-col justify-center items-center gap-5">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+           
+        </div>
+        <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search branch name..." required />
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+           
+           </div>
+           <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search branch name..." required />
+    </div>
+    
+    
+    <button type="submit" className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Choose Ride
+     
+    </button>
+</form> */}
 
 
 <button type="button" onClick={handleSubmit} className="text-white bg-black hover:bg-slate-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-16">Get Started</button>
 <a href="">
- <button onClick={handleLoginUser} ><p className="text text-gray-300">Already have an account ? Sign in</p></button>
+<button onClick={handleLogin}><p className="text text-gray-300">Already have an account ? Sign in</p></button>
 
 </a>
+
+
+
+
 
 
          
@@ -43,12 +61,16 @@ export default function Home() {
      
       <div className="w-full md:w-1/2 py-5 mt-5">
         <img 
-          src="https://b2866231.smushcdn.com/2866231/wp-content/uploads/2022/12/ambulance-services-dubai.jpg?lossy=1&strip=1&webp=1" 
+          src="https://i0.wp.com/wmas.nhs.uk/wp-content/uploads/2024/01/Willenhall_0470.jpg?fit=2560%2C1656&ssl=1" 
           alt="Description of image" 
           className="object-cover object-center w-full h-auto rounded-lg shadow-lg" 
         />
       </div>
     </div>
+
+
+
+
 
 
 
@@ -66,7 +88,7 @@ export default function Home() {
      
       <div className="w-full md:w-1/2 py-5 mt-5">
         <img 
-          src="https://cdn2.unrealengine.com/egs-ambulancelifeaparamedicsimulator-aesirinteractive-g1a-03-1920x1080-6595abf72b63.jpg?h=270&quality=medium&resize=1&w=480" 
+          src="https://www.fortis.edu/blog/healthcare/ambulance-drivers-common-movie-and-television-mistakes/_jcr_content/blog/image.transform/w1000/q85/img.jpeg" 
           alt="Description of image" 
           className="object-cover object-center w-full h-auto rounded-lg shadow-lg" 
         />
@@ -76,7 +98,7 @@ export default function Home() {
 
 
       <div className="w-full md:w-1/2 py-5 mt-5">
-        <h1  className="text-slate-600 text-center md:text-right text-5xl lg:text-5xl font-semibold font-sans  ">"Heroes are those who risk their lives to save others."</h1>
+        <h1  className="text-slate-600 text-center md:text-right text-5xl lg:text-5xl font-semibold font-sans  ">"Drive with confidence"</h1>
          <div className="flex flex-col justify-center items-center gap-5 mt-5 py-3 mr-20 ">
         
 
@@ -89,7 +111,7 @@ export default function Home() {
 
 <button type="button" onClick={handleSubmit} className="text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Get Started</button>
 <a href="">
-<button onClick={handleLoginUser}><p>Already have an account ? Sign in</p></button>
+<button onClick={handleLogin}><p>Already have an account ? Sign in</p></button>
 
 </a>
          
@@ -99,6 +121,28 @@ export default function Home() {
 
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -118,6 +162,11 @@ export default function Home() {
 <div className="flex flex-col justify-center items-center py-8  w-full bg-slate-100">
     <div className="flex flex-col md:flex-row justify-around items-center w-full max-w-screen-xl px-4 ">
       
+  
+     
+     
+
+
 
 
       <div className="w-full md:w-1/2 py-5 mt-5">
@@ -130,17 +179,23 @@ export default function Home() {
 
 <button type="button" onClick={handleSubmit} className="text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Get Started</button>
 <a href="">
-<button onClick={handleLoginUser}><p>Already have an account ? Sign in</p></button>
+<button onClick={handleLogin}><p>Already have an account ? Sign in</p></button>
 
 </a>
 
-       
+
+
+         
+         
          </div>
       </div>
 
+
+
+
       <div className="w-full md:w-1/2 py-5 mt-5">
         <img 
-          src="https://images.igdb.com/igdb/image/upload/t_original/scpqfy.webp" 
+          src="https://i.insider.com/5fec7e17b7ab82001943e8fd?width=700" 
           alt="Description of image" 
           className="object-cover object-center w-full h-auto rounded-lg shadow-lg" 
         />
@@ -151,24 +206,59 @@ export default function Home() {
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
   </div>
+
+
+
+
+
+
+
 
 
   <div className="flex flex-col justify-center items-center py-8  w-full bg-slate-100">
     <div className="flex flex-col md:flex-row justify-around items-center w-full max-w-screen-xl px-4 ">
       
+  
      
       <div className="w-full md:w-1/2 py-5 mt-5">
         <img 
-          src="https://cdn.cloudflare.steamstatic.com/steam/apps/1926520/ss_1aa32aa45f056c962b15ca7b94a9912e05deda3d.1920x1080.jpg?t=1711359274" 
+          src="https://www.emergencyresponsedrivertraining.co.uk/wp-content/uploads/2019/02/ambulance-ceradl3-featured-image.jpg.webp" 
           alt="Description of image" 
           className="object-cover object-center w-full h-auto rounded-lg shadow-lg" 
         />
       </div>
 
+
+
+
       <div className="w-full md:w-1/2 py-5 mt-5">
-        <h1  className="text-slate-600 text-center md:text-right text-5xl lg:text-5xl font-semibold font-sans  ">"Day or night, rain or shine, we are here for you."</h1>
+        <h1  className="text-slate-600 text-center md:text-right text-5xl lg:text-5xl font-semibold font-sans  ">"The willingness to help others, even at personal risk, is true definition of heroism."</h1>
          <div className="flex flex-col justify-center items-center gap-5 mt-5 py-3 mr-20 ">
         
 
@@ -178,15 +268,44 @@ export default function Home() {
 
 <button type="button" onClick={handleSubmit} className="text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Get Started</button>
 <a href="">
-<button onClick={handleLoginUser}><p>Already have an account ? Sign in</p></button>
+<button onClick={handleLogin}><p>Already have an account ? Sign in</p></button>
 
 </a>
-      
+
+
+
+         
+         
          </div>
       </div>
 
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
   </div>
@@ -198,11 +317,19 @@ export default function Home() {
 
 
 
+
+ 
+
+
+
 <footer className="bg-white dark:bg-gray-900 w-full">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-             
+              {/* <a href="https://flowbite.com/" className="flex items-center">
+                  <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" />
+                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+              </a> */}
               <h1 className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white mt-20 ml-28">codeBlue</h1>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -263,8 +390,7 @@ export default function Home() {
 
  
 
-
-  
-
-  );
+  )
 }
+
+export default driverlanding

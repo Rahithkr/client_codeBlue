@@ -1,11 +1,10 @@
 'use client'
 
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css"
+// import Header from "@/components/landing-page/Header";
 import { usePathname } from "next/navigation";
-import {NextAuthProvider} from './Providers'
-import { Toaster } from "@/components/ui/sonner"
-import Header from "@/components/landing-page/Header";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,12 +28,8 @@ const pathname=usePathname()
     <html lang="en">
      
       <body className={inter.className}>
-      <Toaster />
-        <NextAuthProvider>
-        
-      {pathname ==='/' && <Header email="" />}
+      {/* {pathname ==='/admin' &&<Header/>} */}
         {children}
-        </NextAuthProvider>
         </body>
     </html>
   );
