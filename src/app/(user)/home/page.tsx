@@ -12,6 +12,7 @@ import socket from '../../../lib/socket';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import dotenv from 'dotenv'
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 dotenv.config()
 
 const libraries: ('places')[] = ['places'];
@@ -182,7 +183,7 @@ const handleGetCurrentLocation = (e: React.MouseEvent<HTMLButtonElement, MouseEv
 
 
 
-        axios.post('http://localhost:5000/server/user/getTripDetails', { email })
+        axios.post(`${baseUrl}/server/user/getTripDetails`, { email })
         .then(response => {
           const { tripId } = response.data;
           setTripId(tripId); // Set tripId in state
@@ -242,7 +243,7 @@ const handleGetCurrentLocation = (e: React.MouseEvent<HTMLButtonElement, MouseEv
     setLoading(true); // Show loading state
 
     try {
-      const response = await axios.post('http://localhost:5000/server/user/savedlocation', {
+      const response = await axios.post(`${baseUrl}/server/user/savedlocation`, {
         pickupPosition,
         destinationPosition,
         email,
@@ -252,7 +253,7 @@ const handleGetCurrentLocation = (e: React.MouseEvent<HTMLButtonElement, MouseEv
       console.log('Location saved:', response.data.message);
 
 
-      const userResponse = await axios.get(`http://localhost:5000/server/user/userDetails/${email}`);
+      const userResponse = await axios.get(`${baseUrl}/server/user/userDetails/${email}`);
       const userDetails = userResponse.data;
 
 

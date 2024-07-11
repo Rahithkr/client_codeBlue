@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 const OtpVerification: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -35,7 +36,7 @@ const OtpVerification: React.FC = () => {
 
   const handleResendOtp = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/server/user/forgotpasswordresend-otp', { email });
+      const response = await axios.post(`${baseUrl}/server/user/forgotpasswordresend-otp`, { email });
 
       if (response.status === 200) {
         toast.success('OTP resent successfully.');
@@ -53,7 +54,7 @@ const OtpVerification: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/server/user/forgotpassword-otp', { email, otp });
+      const response = await axios.post(`${baseUrl}/server/user/forgotpassword-otp`, { email, otp });
 
       if (response.status === 200) {
         toast.success('OTP verified successfully.');

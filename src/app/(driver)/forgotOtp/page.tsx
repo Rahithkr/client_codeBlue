@@ -9,6 +9,7 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 
 const OtpVerifications: React.FC = () => {
   const router = useRouter();
@@ -40,7 +41,7 @@ const OtpVerifications: React.FC = () => {
 
   const handleResendotp = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/server/driver/driverForgotPasswordResendOtp', { email });
+      const response = await axios.post(`${baseUrl}/server/driver/driverForgotPasswordResendOtp`, { email });
         
       if (response.status === 200) {
         toast.success('OTP resent successfully.');
@@ -58,7 +59,7 @@ const OtpVerifications: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/server/driver/forgotPasswordOtp', { email, otp });
+      const response = await axios.post(`${baseUrl}/server/driver/forgotPasswordOtp`, { email, otp });
 
       if (response.status === 200) {
         toast.success('OTP verified successfully.');

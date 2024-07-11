@@ -5,6 +5,7 @@ import React, { Suspense,useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import ProfileSidebar from '@/components/sidebar/ProfileSidebar';
+import { baseUrl } from '@/utils/baseUrl';
 
 type Position = {
   lat: number;
@@ -30,7 +31,7 @@ const TripHistory = () => {
   useEffect(() => {
     const fetchTripHistory = async () => {
       try {
-        const response = await axios.get<Trip[]>(`http://localhost:5000/server/driver/tripHistory/${email}`);
+        const response = await axios.get<Trip[]>(`${baseUrl}/server/driver/tripHistory/${email}`);
         
         
         setTrips(response.data);

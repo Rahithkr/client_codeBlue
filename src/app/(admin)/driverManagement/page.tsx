@@ -2,6 +2,7 @@
 import AdminNavbar from '@/components/landing-page/AdminHeader';
 import Header from '@/components/landing-page/Header';
 import Sidebar from '@/components/sidebar/Sidebar'
+import { baseUrl } from '@/utils/baseUrl';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
@@ -26,7 +27,7 @@ function DriverManagement() {
     useEffect(() => {
         const fetchDrivers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/server/admin/drivermanagement');
+                const response = await axios.get(`${baseUrl}/server/admin/drivermanagement`);
                 setDrivers(response.data);
             } catch (error) {
                 console.error('Failed to fetch drivers', error);
@@ -39,7 +40,7 @@ function DriverManagement() {
     const handleBlockDriver = async (driverId: string) => {
         console.log("Blocking driver with ID:", driverId);
         try {
-            await axios.post(`http://localhost:5000/server/admin/blockDriver/${driverId}`);
+            await axios.post(`${baseUrl}/server/admin/blockDriver/${driverId}`);
             setDrivers(drivers.map(driver => driver._id === driverId ? { ...driver, isBlocked: true } : driver));
             console.log("Updated drivers after blocking:", drivers);
         } catch (error) {
@@ -50,7 +51,7 @@ function DriverManagement() {
     const handleUnblockDriver = async (driverId: string) => {
         console.log("Unblocking driver with ID:", driverId);
         try {
-            await axios.post(`http://localhost:5000/server/admin/unblockDriver/${driverId}`);
+            await axios.post(`${baseUrl}/server/admin/unblockDriver/${driverId}`);
             setDrivers(drivers.map(driver => driver._id === driverId ? { ...driver, isBlocked: false } : driver));
         } catch (error) {
             console.error('Failed to unblock driver', error);

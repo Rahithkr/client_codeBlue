@@ -7,6 +7,7 @@ import React, { Suspense,useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {toast} from 'sonner'
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 function EditProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -20,7 +21,7 @@ function EditProfile() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/server/user/userProfile/${email}`);
+        const response = await axios.get(`${baseUrl}/server/user/userProfile/${email}`);
         setUser(response.data);
       } catch (error) {
         console.error('Failed to fetch user details', error);
@@ -33,7 +34,7 @@ function EditProfile() {
   const handleFormSubmit = async (event:any) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/server/user/updateProfile/${email}`, user);
+      await axios.put(`${baseUrl}/server/user/updateProfile/${email}`, user);
       toast('Profile updated successfully!');
     } catch (error) {
       console.error('Failed to update profile', error);

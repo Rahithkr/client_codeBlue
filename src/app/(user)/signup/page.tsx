@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
+import { baseUrl } from '@/utils/baseUrl';
 
 interface formData {
   username: string;
@@ -84,7 +85,7 @@ function Signup() {
      
       try {
         setLoading(true); // Start loading
-        const res = await axios.post('http://localhost:5000/server/user/verify-otp', { email: formData.email, otp:otp }, {
+        const res = await axios.post(`${baseUrl}/server/user/verify-otp`, { email: formData.email, otp:otp }, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -107,7 +108,7 @@ function Signup() {
       
       try {
         setLoading(true); // Start loading
-        const res = await axios.post('http://localhost:5000/server/user/signup', formData, {
+        const res = await axios.post(`${baseUrl}/server/user/signup`, formData, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -133,7 +134,7 @@ function Signup() {
   const handleResendOtp = async () => {
     try {
       setLoading(true); // Start loading
-      const res = await axios.post('http://localhost:5000/server/user/resend-otp', { email: formData.email }, {
+      const res = await axios.post(`${baseUrl}/server/user/resend-otp`, { email: formData.email }, {
         headers: {
           'Content-Type': 'application/json'
         }

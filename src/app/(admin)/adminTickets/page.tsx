@@ -2,6 +2,7 @@
 import AdminNavbar from '@/components/landing-page/AdminHeader';
 
 import Sidebar from '@/components/sidebar/Sidebar'
+import { baseUrl } from '@/utils/baseUrl';
 
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -43,7 +44,7 @@ function TicketManagement() {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get<Ticket[]>('http://localhost:5000/server/admin/tickets');
+        const response = await axios.get<Ticket[]>(`${baseUrl}/server/admin/tickets`);
         setTickets(response.data);
       } catch (error) {
         console.error('Error fetching tickets:', error);
@@ -56,7 +57,7 @@ function TicketManagement() {
 console.log("selectedid",selectedTicketId);
 
     try {
-        const response = await axios.post('http://localhost:5000/server/admin/replyTicket', {
+        const response = await axios.post(`${baseUrl}/server/admin/replyTicket`, {
             ticketId: selectedTicketId,
             reply,
             

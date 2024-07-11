@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import UserProfileSidebar from '@/components/sidebar/UserProfileSidebar';
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 type Position = {
   lat: number;
   lng: number;
@@ -36,7 +37,7 @@ const TripHistory = () => {
   useEffect(() => {
     const fetchTripHistory = async () => {
       try {
-        const response = await axios.get<Trip[]>(`http://localhost:5000/server/user/getTripHistory/${email}`);
+        const response = await axios.get<Trip[]>(`${baseUrl}/server/user/getTripHistory/${email}`);
         setTrips(response.data);
       } catch (error) {
         console.error('Error fetching trip history:', error);
@@ -54,7 +55,7 @@ const TripHistory = () => {
     const fetchTicketStatus = async () => {
       if (selectedTripId) {
         try {
-          const response = await axios.get(`http://localhost:5000/server/admin/getTicketStatus/${selectedTripId}`);
+          const response = await axios.get(`${baseUrl}/server/admin/getTicketStatus/${selectedTripId}`);
           console.log("respons",response);
           
           setTicketStatus(response.data.status);
@@ -79,14 +80,14 @@ const TripHistory = () => {
     if (!selectedTripId || !ticketDescription) return;
 
     try {
-      await axios.post('http://localhost:5000/server/admin/raiseTicket', {
+      await axios.post(`${baseUrl}/server/admin/raiseTicket`, {
         tripId: selectedTripId,
         description: ticketDescription,
       });
       setShowModal(false);
       setTicketDescription('');
      
-      const response = await axios.get(`http://localhost:5000/server/admin/getTicketStatus/${selectedTripId}`);
+      const response = await axios.get(`${baseUrl}/server/admin/getTicketStatus/${selectedTripId}`);
       setTicketStatus(response.data.status);
     } catch (error) {
       console.error('Error sending ticket:', error);

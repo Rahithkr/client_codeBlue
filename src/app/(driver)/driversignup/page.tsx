@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { baseUrl } from '@/utils/baseUrl';
 
 interface formData {
   drivername: string;
@@ -62,7 +63,7 @@ const DriverSignup: React.FC = () => {
 
     try {
       setLoading(true); // Start loading
-      const res = await axios.post('http://localhost:5000/server/driver/signup', formData, {
+      const res = await axios.post(`${baseUrl}/server/driver/signup`, formData, {
         headers: {
           'Content-Type': 'application/json'
         }

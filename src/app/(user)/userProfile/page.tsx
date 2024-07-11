@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, {Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 function UserProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -19,7 +20,7 @@ function UserProfile() {
 useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/server/user/userProfile/${email}`);
+            const response = await axios.get(`${baseUrl}/server/user/userProfile/${email}`);
             setUser(response.data);
         } catch (error) {
             console.error('Failed to fetch users', error);

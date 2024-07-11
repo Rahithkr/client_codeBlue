@@ -2,6 +2,7 @@
 import AdminNavbar from '@/components/landing-page/AdminHeader';
 import Header from '@/components/landing-page/Header';
 import Sidebar from '@/components/sidebar/Sidebar'
+import { baseUrl } from '@/utils/baseUrl';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
@@ -21,7 +22,7 @@ function Usermanagement() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/server/admin/userMangement');
+                const response = await axios.get(`${baseUrl}/server/admin/userMangement`);
                 setUsers(response.data);
             } catch (error) {
                 console.error('Failed to fetch users', error);
@@ -35,7 +36,7 @@ function Usermanagement() {
         console.log("Blocking user with ID:", userId); // Debug log
         try {
         
-            await axios.post(`http://localhost:5000/server/admin/blockUser/${userId}`);
+            await axios.post(`${baseUrl}/server/admin/blockUser/${userId}`);
             setUsers(users.map(user => user._id === userId ? { ...user, isBlocked: true } : user));
             console.log("Updated users after blocking:", users);
         } catch (error) {
@@ -46,7 +47,7 @@ function Usermanagement() {
     const handleUnblockUser = async (userId: string) => {
         console.log("Unblocking user with ID:", userId); // Debug log
         try {
-            await axios.post(`http://localhost:5000/server/admin/unblockUser/${userId}`);
+            await axios.post(`${baseUrl}/server/admin/unblockUser/${userId}`);
             setUsers(users.map(user => user._id === userId ? { ...user, isBlocked: false } : user));
         } catch (error) {
             console.error('Failed to unblock user', error);

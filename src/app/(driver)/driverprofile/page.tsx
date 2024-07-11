@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import React, { Suspense,useEffect, useState } from 'react'
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 function DriverProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
@@ -17,7 +18,7 @@ function DriverProfile() {
   useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/server/driver/driverProfile/${email}`);
+            const response = await axios.get(`${baseUrl}/server/driver/driverProfile/${email}`);
             setUser(response.data);
         } catch (error) {
             console.error('Failed to fetch users', error);

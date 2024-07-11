@@ -6,6 +6,7 @@ import FacebookProvider from 'next-auth/providers/facebook';
 import { NextAuthOptions } from 'next-auth';
 import axios from 'axios';
 import dotenv from 'dotenv'
+import { baseUrl } from '@/utils/baseUrl';
 
 dotenv.config()
 
@@ -25,13 +26,13 @@ const authOptions: NextAuthOptions = {
             try {
                 if (account?.provider === "google") {
                     const { name, image, email } = user;
-                    const response = await axios.post('http://localhost:5000/server/user/google', { email, image, name });
+                    const response = await axios.post(`${baseUrl}/server/user/google`, { email, image, name });
                     if (response.status !== 200) {
                         throw new Error("Backend failed to load the user details");
                     }
                 } else if (account?.provider === "facebook") {
                     const { name, email } = user;
-                    const response = await axios.post('http://localhost:5000/server/driver/facebook', { email, name });
+                    const response = await axios.post(`${baseUrl}/server/driver/facebook`, { email, name });
                     if (response.status !== 200) {
                         throw new Error("Backend failed to load the user details");
                     }

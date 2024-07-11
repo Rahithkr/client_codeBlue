@@ -3,6 +3,7 @@ import React, { Suspense,useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 const VerifyOtp: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -32,7 +33,7 @@ const VerifyOtp: React.FC = () => {
     e.preventDefault();
     try {
       setLoading(true); // Start loading
-      const res = await axios.post('http://localhost:5000/server/driver/verify-otp', { email, otp }, {
+      const res = await axios.post(`${baseUrl}/server/driver/verify-otp`, { email, otp }, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -56,7 +57,7 @@ const VerifyOtp: React.FC = () => {
   const handleResendOtp = async () => {
     try {
       setLoading(true); // Start loading
-      const res = await axios.post('http://localhost:5000/server/driver/resend-otp', { email }, {
+      const res = await axios.post(`${baseUrl}/server/driver/resend-otp`, { email }, {
         headers: {
           'Content-Type': 'application/json'
         }

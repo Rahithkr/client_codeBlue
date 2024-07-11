@@ -172,6 +172,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { baseUrl } from '@/utils/baseUrl';
 
 dotenv.config();
 const libraries: ["places"] = ["places"];
@@ -261,7 +262,7 @@ const UserMap: React.FC<any> = ({ email, pickupPosition, destinationPosition, on
     console.log("email:", email);
 
     try {
-      await axios.post('http://localhost:5000/server/user/location', {
+      await axios.post(`${baseUrl}/server/user/location`, {
         email,
         latitude: newPosition.lat,
         longitude: newPosition.lng,

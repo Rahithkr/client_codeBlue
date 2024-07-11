@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {toast} from 'sonner'
 import { useRouter } from 'next/navigation';
+import { baseUrl } from '@/utils/baseUrl';
 
 const ForgotPassword: React.FC = () => {
 const router=useRouter()
@@ -13,7 +14,7 @@ const router=useRouter()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:5000/server/user/forgot-password', { email });
+        const response = await axios.post(`${baseUrl}/server/user/forgot-password`, { email });
     
         if (response.status === 200) {
           toast('Check your email for the reset otp.');

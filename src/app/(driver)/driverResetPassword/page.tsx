@@ -3,6 +3,7 @@ import React, { useState,Suspense } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { baseUrl } from '@/utils/baseUrl';
 
 const NewPassword: React.FC = () => {
   const searchParams = useSearchParams();
@@ -20,7 +21,7 @@ const NewPassword: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/server/driver/resetPassword', { email, newPasswords });
+      const response = await axios.post(`${baseUrl}/server/driver/resetPassword`, { email, newPasswords });
 
       if (response.status === 200) {
         toast.success('Password updated successfully.');

@@ -1,6 +1,7 @@
 'use client'
 
 import ProfileSidebar from '@/components/sidebar/ProfileSidebar'
+import { baseUrl } from '@/utils/baseUrl'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useState ,Suspense } from 'react'
@@ -76,7 +77,7 @@ console.log("FormData to be sent:", {
 });
 
 try {
-  const res = await axios.post('http://localhost:5000/server/driver/registration', form, {
+  const res = await axios.post(`${baseUrl}/server/driver/registration`, form, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

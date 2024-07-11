@@ -4,6 +4,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { baseUrl } from '@/utils/baseUrl';
 
 interface formData {
  
@@ -62,7 +63,7 @@ if (!formData.password) {
 setErrors(validationErrors);
 
 try{
-  const res= await axios.post('http://localhost:5000/server/driver/signin',formData,{
+  const res= await axios.post(`${baseUrl}/server/driver/signin`,formData,{
     headers:{
 
     'Content-Type':'application/json'

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import Image from 'next/image'; // Importing Image from next/image
+import { baseUrl } from '@/utils/baseUrl';
 
 function Driverlogin() {
 
@@ -21,7 +22,7 @@ function Driverlogin() {
  const handleSubmit=async(e:any)=>{
   e.preventDefault()
   try {
-    const res=await axios.post('http://localhost:5000/server/admin/adminsignin',formData,{
+    const res=await axios.post(`${baseUrl}/server/admin/adminsignin`,formData,{
       headers:{
   
       'Content-Type':'application/json'

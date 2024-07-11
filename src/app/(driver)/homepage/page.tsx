@@ -10,6 +10,7 @@ import { AlertCircle } from "lucide-react";
 import { generateRandomId } from '@/lib/randomTripId';
 import dotenv from 'dotenv'
 import Loading from '@/components/loading/page';
+import { baseUrl } from '@/utils/baseUrl';
 
 dotenv.config()
 // Simulated Google Maps API key
@@ -103,7 +104,7 @@ console.log("tripsmount",tripAmount);
   useEffect(() => {
     const fetchDriverInfo = async () => {
       try {
-        const response = await axios.get<{ registrationStatus: string }>(`http://localhost:5000/server/driver/driverkycinfo/${email}`);
+        const response = await axios.get<{ registrationStatus: string }>(`${baseUrl}/server/driver/driverkycinfo/${email}`);
         const { registrationStatus } = response.data;
         setRegistrationStatus(registrationStatus);
       } catch (error) {
@@ -188,7 +189,7 @@ console.log("tripsmount",tripAmount);
 
   const handleApprove = async (request: RideRequest) => {
     try {
-      const response = await axios.get<DriverInfo>(`http://localhost:5000/server/driver/driverInfo/${email}`);
+      const response = await axios.get<DriverInfo>(`${baseUrl}/server/driver/driverInfo/${email}`);
       const driverInfo = response.data;
       console.log('driverInfo', driverInfo);
       const amount = calculateTripAmount(request.data.pickupPosition, request.data.destinationPosition);
@@ -221,7 +222,7 @@ console.log("setTripAmount",tripAmount);
 const tripIds=generateRandomId()
 console.log("tripIds",tripIds);
 
-const saveTripDetailsResponse=await axios.post('http://localhost:5000/server/driver/saveTripDetails', {
+const saveTripDetailsResponse=await axios.post(`${baseUrl}/server/driver/saveTripDetails`, {
   email,
   tripDetails: {
     userEmail: request.data.email,
@@ -236,7 +237,7 @@ const saveTripDetailsResponse=await axios.post('http://localhost:5000/server/dri
 const tripId = saveTripDetailsResponse.data.driver.tripDetails.slice(-1)[0].tripId;
 
 
-await axios.post('http://localhost:5000/server/user/updateTripId', {
+await axios.post(`${baseUrl}/server/user/updateTripId`, {
   email: request.data.email,
   tripDetails: {
     drivername: driverInfo.drivername,
@@ -310,7 +311,7 @@ await axios.post('http://localhost:5000/server/user/updateTripId', {
     
 
     try {
-      await axios.post('http://localhost:5000/server/driver/isOnlineOffline', { email, status: newStatus });
+      await axios.post(`${baseUrl}/server/driver/isOnlineOffline`, { email, status: newStatus });
       setIsOnline(!isOnline);
       localStorage.setItem('isOnline', (!isOnline).toString());
 

@@ -8,6 +8,7 @@ import Sidebar from '@/components/sidebar/Sidebar';
 import axios from 'axios';
 import AdminNavbar from '@/components/landing-page/AdminHeader';
 import Image from 'next/image'; // Importing Image from next/image
+import { baseUrl } from '@/utils/baseUrl';
 
 interface Driver {
     drivername: string;
@@ -32,7 +33,7 @@ function DriverKyc() {
     useEffect(() => {
         const fetchDrivers = async () => {
             try {
-                const response = await axios.get<Driver[]>('http://localhost:5000/server/admin/driverKyc');
+                const response = await axios.get<Driver[]>(`${baseUrl}/server/admin/driverKyc`);
                 setDrivers(response.data);
             } catch (error) {
                 console.error('Failed to fetch drivers', error);
@@ -44,7 +45,7 @@ function DriverKyc() {
 
     const handleStatusChange = async (email: string, documentNumber: string, status: string) => {
         try {
-            await axios.put('http://localhost:5000/server/admin/update-kyc-status', {
+            await axios.put(`${baseUrl}/server/admin/update-kyc-status`, {
                 email,
                 documentNumber,
                 status

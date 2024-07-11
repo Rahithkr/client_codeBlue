@@ -119,6 +119,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { baseUrl } from '@/utils/baseUrl';
 
 dotenv.config();
 const libraries: ["places"] = ["places"];
@@ -176,7 +177,7 @@ const DriverMap: React.FC<any> = ({ email })  => {
 
   const updateDriverLocation = async (newPosition: { lat: number; lng: number }, email: string) => {
     try {
-      await axios.post('http://localhost:5000/server/driver/location', {
+      await axios.post(`${baseUrl}/server/driver/location`, {
         email,
         latitude: newPosition.lat,
         longitude: newPosition.lng,

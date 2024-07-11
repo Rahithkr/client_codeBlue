@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
+import { baseUrl } from '@/utils/baseUrl';
 
 function ProfileSidebar() {
     const router=useRouter()
@@ -17,7 +18,7 @@ function ProfileSidebar() {
     useEffect(() => {
       const fetchUserProfile = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/server/driver/driverProfileSidebar/${email}`);
+          const response = await axios.get(`${baseUrl}/server/driver/driverProfileSidebar/${email}`);
           setUser(response.data);
         } catch (error) {
           console.error('Failed to fetch user profile', error);
