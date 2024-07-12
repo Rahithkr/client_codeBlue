@@ -24,6 +24,7 @@ const authOptions: NextAuthOptions = {
             clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET !
         })
     ],
+    debug: true,
     callbacks: {
         async signIn({ user, account }) {
             try {
