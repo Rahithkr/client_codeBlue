@@ -128,16 +128,22 @@ console.log("driver",drivers);
                                         {driver.mobile}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <img src={`${baseUrl}/${reg.documentImage}`} alt="" />
-                                    <Image
-                                            src={`${baseUrl}/${reg.documentImage}`}
+                                        {/* <Image src={`${baseUrl}/img/${reg.documentImage}`}
+                                        key={reg.documentNumber}
+                                        className="h-20 w-20 object-cover cursor-pointer"
+                                        width={80}
+                                        height={80} 
+                                        /> */}
+                                        <img height={100} width={100} src={`${baseUrl}/img/${reg.documentImage}`} alt="" />
+                                    {/* <Image
+                                            src={`${baseUrl}/img/${reg?.documentImage}`}
                                             alt="Document"
                                             key={reg.documentNumber}
                                             className="h-20 w-20 object-cover cursor-pointer"
                                             width={80}
                                             height={80}
-                                            onClick={() => openImageModal(reg.documentImage.startsWith('http') ? reg.documentImage : `/${reg.documentImage}`)}
-                                        />
+                                            onClick={() => openImageModal(`${baseUrl}/img/${reg.documentImage}`)}
+                                        /> */}
                                     </td>
                                     <td className="px-6 py-4">
                                         {reg.documentNumber}
@@ -176,7 +182,7 @@ console.log("driver",drivers);
             {modalOpen && selectedImage && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
-                    <Image src={`${baseUrl}/${selectedImage}`} alt="Document" width={800} height={600} />
+                    <Image src={`${baseUrl}/img/${selectedImage}`} alt="Document" width={800} height={600} />
                     <button className="absolute text-2xl top-2 right-5 text-white hover:text-gray-800" onClick={closeModal}>Close</button>
                     </div>
                 </div>

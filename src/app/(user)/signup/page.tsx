@@ -207,7 +207,8 @@ function Signup() {
       <div className="flex justify-center items-center w-full md:w-1/2 p-5">
       <Image
     src="https://i2-prod.walesonline.co.uk/incoming/article25253902.ece/ALTERNATES/s1200c/0_400890Ambulance-S10.jpg"
-    alt="Ambulance staff"
+    alt="Ambulance staff" width={800}  
+    height={600}
     className="max-w-full h-auto"
   />      </div>
     </div>
