@@ -140,7 +140,7 @@ interface DriverMapProps {
 
 const DriverMap: React.FC<any> = ({ email })  => {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey:'AIzaSyAf8f_FR4xw9Y7QxinMkMNpXSIO4_ZqJwA',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY!,
     libraries,
   });
 
