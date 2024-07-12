@@ -74,6 +74,7 @@ function DriverKyc() {
         setSelectedImage(undefined); // Reset selectedImage to undefined
         setModalOpen(false);
     };
+console.log("driver",drivers);
 
     return (
         <div className='mt-20 flex flex-col'>
@@ -113,6 +114,7 @@ function DriverKyc() {
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {drivers.map((driver) => (
                             driver.registration.map((reg, index) => (
                                 <tr key={`${driver.email}-${index}`} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
@@ -126,6 +128,7 @@ function DriverKyc() {
                                         {driver.mobile}
                                     </td>
                                     <td className="px-6 py-4">
+                                        <img src={`${baseUrl}/${reg.documentImage}`} alt="" />
                                     <Image
                                             src={`${baseUrl}/${reg.documentImage}`}
                                             alt="Document"
