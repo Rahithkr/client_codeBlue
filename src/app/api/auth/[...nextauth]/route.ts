@@ -13,7 +13,7 @@ dotenv.config()
 const authOptions: NextAuthOptions = {
     providers: [    
         GoogleProvider({
-            // kkkkk
+            
             // clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID !,
             // clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET !
             clientId: '113220250837-5hnd3vup12nk15sq5050pcgfepj32776.apps.googleusercontent.com',
