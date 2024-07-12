@@ -47,6 +47,8 @@ const authOptions: NextAuthOptions = {
                 }
                 return true;
             } catch (error) {
+                console.log("12345");
+                
                 console.error("Error:", error);
                 return false;
             }
