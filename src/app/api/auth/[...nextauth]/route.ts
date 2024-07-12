@@ -24,10 +24,14 @@ const authOptions: NextAuthOptions = {
             clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET !
         })
     ],
-    debug: true,
+   
     callbacks: {
         async signIn({ user, account }) {
+            console.log('111');
+            
             try {
+                console.log('222');
+                
                 if (account?.provider === "google") {
                     const { name, image, email } = user;
                     const response = await axios.post(`${baseUrl}/server/user/google`, { email, image, name });
@@ -47,7 +51,8 @@ const authOptions: NextAuthOptions = {
                 return false;
             }
         }
-    }
+    },
+    debug: true,
 };
 
 const handler = NextAuth(authOptions);
