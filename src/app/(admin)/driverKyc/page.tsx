@@ -127,7 +127,7 @@ function DriverKyc() {
                                     </td>
                                     <td className="px-6 py-4">
                                     <Image
-                                            src={reg.documentImage.startsWith('http') ? reg.documentImage : `/${reg.documentImage}`}
+                                            src={`${baseUrl}/${reg.documentImage}`}
                                             alt="Document"
                                             key={reg.documentNumber}
                                             className="h-20 w-20 object-cover cursor-pointer"
@@ -173,7 +173,7 @@ function DriverKyc() {
             {modalOpen && selectedImage && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
-                    <Image src={selectedImage.startsWith('http') ? selectedImage : `/${selectedImage.replace(/^\/+/, '')}`} alt="Document" width={800} height={600} />
+                    <Image src={`${baseUrl}/${selectedImage}`} alt="Document" width={800} height={600} />
                     <button className="absolute text-2xl top-2 right-5 text-white hover:text-gray-800" onClick={closeModal}>Close</button>
                     </div>
                 </div>
