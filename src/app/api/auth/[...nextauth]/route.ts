@@ -11,10 +11,13 @@ import { baseUrl } from '@/utils/baseUrl';
 dotenv.config()
 
 const authOptions: NextAuthOptions = {
-    providers: [
+    providers: [    
         GoogleProvider({
-            clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID !,
-            clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET !
+            // kkkkk
+            // clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID !,
+            // clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET !
+            clientId: '113220250837-5hnd3vup12nk15sq5050pcgfepj32776.apps.googleusercontent.com',
+            clientSecret: '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' 
         }),
         FacebookProvider({
             clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID !,
