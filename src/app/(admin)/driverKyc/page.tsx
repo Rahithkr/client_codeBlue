@@ -134,8 +134,8 @@ console.log("driver",drivers);
                                         width={80}
                                         height={80} 
                                         /> */}
-                                        <img height={100} width={100} src={`${baseUrl}/img/${reg.documentImage}`} alt="" />
-                                    {/* <Image
+                                        {/* <img height={100} width={100} src={`${baseUrl}/img/${reg.documentImage}`} alt="" /> */}
+                                    <Image
                                             src={`${baseUrl}/img/${reg?.documentImage}`}
                                             alt="Document"
                                             key={reg.documentNumber}
@@ -143,7 +143,7 @@ console.log("driver",drivers);
                                             width={80}
                                             height={80}
                                             onClick={() => openImageModal(`${baseUrl}/img/${reg.documentImage}`)}
-                                        /> */}
+                                        />
                                     </td>
                                     <td className="px-6 py-4">
                                         {reg.documentNumber}
