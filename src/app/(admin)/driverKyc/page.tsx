@@ -127,7 +127,7 @@ console.log("driver",drivers);
                                     <td className="px-6 py-4">
                                         {driver.mobile}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    {/* <td className="px-6 py-4"> */}
                                         {/* <Image src={`${baseUrl}/img/${reg.documentImage}`}
                                         key={reg.documentNumber}
                                         className="h-20 w-20 object-cover cursor-pointer"
@@ -135,7 +135,7 @@ console.log("driver",drivers);
                                         height={80} 
                                         /> */}
                                         {/* <img height={100} width={100} src={`${baseUrl}/img/${reg.documentImage}`} alt="" /> */}
-                                    <Image
+                                    {/* <Image
                                             src={`${baseUrl}/img/${reg?.documentImage}`}
                                             alt="Document"
                                             key={reg.documentNumber}
@@ -144,7 +144,7 @@ console.log("driver",drivers);
                                             height={80}
                                             onClick={() => openImageModal(`${baseUrl}/img/${reg.documentImage}`)}
                                         />
-                                    </td>
+                                    </td> */}
                                     <td className="px-6 py-4">
                                         {reg.documentNumber}
                                     </td>
